@@ -9,20 +9,18 @@
             <br>
             <br>
             <div class="row">
-                <div class="col col-span-1"> <label>Checkin <input id="datepicker1" width="270" /></label></div>
-                <div class="col col-span-1"><label>Checkout<input id="datepicker2" width="270" />></label></div>
-                <div class="col col-span-1"><label>Name<input type="text"></label></div>
-                <div class="col col-span-1"> <label>Email<input type="email"></label></div>
-                <div class="col col-span-1"> <label>Guests
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </label></div>
-            </div>
+                {{--<div class="col col-span-1"> <label>Checkin <input id="datepicker1" width="270" /></label></div>
+                <div class="col col-span-1"><label>Checkout<input id="datepicker2" width="270" /></label></div>
+                --}}
+                <div class="col col-span-1"><input type="text"  width="270" placeholder="Name.."></div>
+                <div class="col col-span-1"> <input type="email" width="270" placeholder="Email.."></div>
+                <div class="col col-span-1"> <input type="number" width="270" placeholder="Contact no..."></div>
+                <div class="col col-span-1"><textarea  rows="5" cols="35" width="270">Comments...</textarea></div>
 
-            <input type="submit" value="check">
+            </div>
+            <div class="container">
+                <a href="#" class="btn-1"><span>Submit</span></a>
+            </div>
 
 
         </div>
