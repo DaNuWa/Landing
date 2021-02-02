@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +11,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('landing')->group(function() {
+    Route::get('/', 'LandingController@index');
+});
 
+Route::get('/', function ()
+{
+    return view('landing::index');
+});
