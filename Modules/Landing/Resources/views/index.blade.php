@@ -3,8 +3,14 @@
 @section('content')
     <section class="landing">
         <div class="landing-inner">
-            <img src="{{asset('images/logo2.jpeg')}}" width="200"/>
-            <h1>Coming Soon</h1>
+            {{--<img src="{{asset('images/logo2.jpeg')}}" width="200"/>
+           --}}
+             <h1 id="demo">we will launch soon</h1>
+            <br>
+            <span class="fonteo"></span>
+            <br>
+            <br>
+            <br>
             <div class="countdown"></div>
             <br>
             <br>
@@ -12,17 +18,15 @@
                 {{--<div class="col col-span-1"> <label>Checkin <input id="datepicker1" width="270" /></label></div>
                 <div class="col col-span-1"><label>Checkout<input id="datepicker2" width="270" /></label></div>
                 --}}
-                <div class="col col-span-1"><input type="text"  width="270" placeholder="Name.."></div>
-                <div class="col col-span-1"> <input type="email" width="270" placeholder="Email.."></div>
-                <div class="col col-span-1"> <input type="number" width="270" placeholder="Contact no..."></div>
-                <div class="col col-span-1"><textarea  rows="5" cols="35" width="270">Comments...</textarea></div>
+                <div class="col col-span-1"> <input id="name" type="text" placeholder="enter your name"></div>
+                <div class="col col-span-1"> <input id="email" type="email" width="270" placeholder="Email.."></div>
+                <div class="col col-span-1"> <input id="contact_no" type="text" width="270" placeholder="+94........."></div>
+                <div class="col col-span-1"> <input id="comments" type="text" width="270" placeholder="Comments..."></div>
 
             </div>
             <div class="container">
-                <a href="#" class="btn-1"><span>Submit</span></a>
+                <a  id="submit" href="#" class="btn-1"><span>Submit</span></a>
             </div>
-
-
         </div>
     </section>
 
@@ -35,6 +39,12 @@
         });
         $('#datepicker2').datepicker({
             uiLibrary: 'bootstrap'
+        });
+
+
+        //Launch soon animation
+       $(function(){
+            $('#demo').jBlink();
         });
 
 
@@ -77,6 +87,63 @@
                 countdown.innerHTML = 'Launched!';
             }
         }, 1000);
+
+        //Coming soon animation options
+        var opts = {
+            text: 'Coming soon',
+            direction: 'right',
+            infinite: true,
+            moving: true,
+            pauseOnHover: true,
+            speed: 3,
+            letterIn: function(lr){
+                lr.animate({'font-size':'30px', 'margin-left':'5px' ,'font-family':'Lato' })
+                lr.css('color','green')
+
+                setTimeout( function(){
+                    lr.css('color','blue')
+                    lr.animate({'font-size':'20px', 'margin-left':'22px'  })
+                }, 100 )
+
+                setTimeout( function(){
+                    lr.animate({'font-size':'50px', 'margin-left':'0px' ,'font-family':'Droid serif' })
+                    lr.css('color','black')
+                }, 200 )
+            },
+            letterOut: function(lr){
+                lr.animate({'font-size':'10px'},500,function(){
+                    $(this).fadeOut(300, function(){ $(this).remove() })
+                })
+            }
+        }
+
+        $('.fonteo').fonteo( opts )
+
+    </script>
+    <script>
+        $('#submit').click(function ()
+        {
+            let name=$('#name').val();
+            let email=$('#email').val();
+            let contact_no=$('#contact_no').val();
+            let comments=$('#comments').val();
+
+
+            //Ajax call for the submit contact info
+            $.ajax({
+                type: 'post',
+                url: '/api/sort_order_item',
+                data: {
+                    'items': items,
+                    '_token': $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function()
+                {
+                    alert('looks like it is working...');
+                },
+            });
+
+        });
 
     </script>
 
