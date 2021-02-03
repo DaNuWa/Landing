@@ -1,34 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Landing</title>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeStarz">
+    <link rel="shortcut icon" href="{{asset('assets/img/favicon.ico" type="image/x-icon')}}">
+    <link href="{{asset('assets/fonts/font-awesome.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/fonts/elegant-fonts.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/trackpad-scroll-emulator.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Hotelshippo</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-        <!-- Styles -->
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
-      {{--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        --}}<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</head>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      {{--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        --}}
-        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-        <script src="{{asset('js/jblink.js')}}"></script>
-        <script src="{{asset('js/fonteo.js')}}"></script>
+<body class=" frame">
+ @yield('content')
 
-        {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/landing.css') }}"> --}}
 
-    </head>
-    <body class="">
-        @yield('content')
+<script type="text/javascript" src="{{asset('assets/js/jquery-2.2.1.min.js')}}"></script>
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script> -->
+<script type="text/javascript" src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery.trackpad-scroll-emulator.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/particles.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/fonteo.js')}}"></script>
 
-    @yield('js')
-    </body>
+<script type="text/javascript">
+    // var latitude = 34.038405;
+    // var longitude = -117.946944;
+    // var markerImage = "assets/img/map-marker-w.png";
+    // var mapTheme = "dark";
+    // var mapElement = "map-contact";
+    // google.maps.event.addDomListener(window, 'load', simpleMap(latitude, longitude, markerImage, mapTheme, mapElement));
+
+    particlesJS.load("particles-js", "assets/json/particles-default-dark-theme.json");
+
+</script>
+
+@yield('js')
+</body>
 </html>

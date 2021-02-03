@@ -2,9 +2,12 @@
 
 namespace Modules\Landing\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Landing\Entities\Contact;
+use Modules\Landing\Http\Requests\ContactRequest;
 
 class ContatctController extends Controller
 {
@@ -28,12 +31,13 @@ class ContatctController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param ContactRequest $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+        $contatct=Contact::create($request->validated());
+        return response()->json(['contact' => $contatct]);
     }
 
     /**

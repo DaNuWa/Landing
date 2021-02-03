@@ -20,4 +20,4 @@ Route::get('/', function ()
     return view('landing::index');
 });
 
-Route::get('/contacts', [\Modules\Landing\Http\Controllers\ContatctController::class,'store'])->name('contacts.store');
+Route::post('/contacts', [\Modules\Landing\Http\Controllers\ContatctController::class,'store'])->name('contacts.store');
