@@ -1,24 +1,49 @@
 @extends('landing::layouts.master')
 
 @section('content')
+<header id="toast" style="display:none;background: #9e84bf; color:white;padding: 10px;width: 500px; margin-left: 50px;z-index: 999;margin-bottom: 50px;" >Sucessfully added your information</header>
+    <div id="load" class="load">
+        <img src="{{asset('assets/img/hippo_load.gif')}}" width="50%" >
+    </div>
+
     <div id="outer-wrapper" class="animate translate-z-in">
+
+        <div class="toast-area" id="toasts">
+            <div style="display: none">
+                <div class="toast" id="clonemother">
+                    <div class="toast-content">
+                        <div class="before"></div>
+                        <div class="icon">&#x2714</div>
+                        <div class="text"><p>Success</p><p class="message">You just clicked the toast button, this toast will be closed in 2s..</p></div>
+                        <div onclick="deletethis()" class="close">&#x00D7</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="toast">
+              <div class="toast-content">
+                <div class="before"></div>
+                <div class="icon">&#x2714</div>
+                <div class="text"><p>Success</p><p class="message">You just clicked the toast button, this toast will be closed in</p></div>
+                <div onclick="deletethis()" class="close">&#x00D7</div>
+              </div>
+            </div> -->
+        </div>
+
         <div id="inner-wrapper">
             <div id="table-wrapper" class="center">
                 <div class="container">
                     <div id="row-header">
-                        <header><a href="#" id="brand" class="animate animate fade-in animation-time-3s desktop"><img src="assets/img/Assests_Negative logo Horizontal.png" alt="" width="20%"></a></header>
-                        <header><a href="#" id="brand" class="animate animate fade-in animation-time-3s mobile"><img src="assets/img/mobile_logo.png" alt="" width="20%"></a></header>
+                        <header><a href="#" id="brand" class="animate animate fade-in animation-time-3s desktop"><img src="{{asset('assets/img/Assests_Negative logo Horizontal.png')}}" alt="" width="20%"></a></header>
+                        <header><a href="#" id="brand" class="animate animate fade-in animation-time-3s mobile"><img src="{{asset('assets/img/mobile_logo.png')}}" alt="" width="20%"></a></header>
                     </div>
                     <!--end row-header-->
                     <div id="row-content">
                         <div id="content-wrapper">
                             <div id="content" class="animate translate-z-in animation-time-2s delay-03s">
                                 <!-- <div id="loading" class="loading"></div> -->
-                                <h1  class='fonteo'>We're Coming Soon!</h1>
-
+                                <h1  class='animate__animated animate__swing animate__infinite infinite'>We're Coming Soon!</h1>
                                 <h2 class="opacity-70">Contat us when the site come back!  No worries,no spam </h2>
                                 <a href="#contact" class="open-side-panel btn btn-default btn-framed">Get notify</a><br>
-                                <img src="assets/img/hippo_load.gif" width="20%">
                             </div>
                             <!--end content-->
                         </div>
@@ -28,7 +53,6 @@
                     <div id="row-footer">
                         <footer>
                             <div class="social-icons">
-                                <a href="#" class="animate fade-in animation-time-1s delay-08s"><i class="fa fa-facebook"></i></a>
                             </div>
                         </footer>
                     </div>
@@ -93,7 +117,7 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="form-contact-cnumber" name="contact_no" placeholder="94123...." required>
+                                                <input type="tel" class="form-control" id="form-contact-cnumber" name="contact_no" placeholder="Contact no" required>
                                                 <p style="color: red" id="validation-errors_contact_no"></p>
                                             </div>
                                             <!--end form-group -->
@@ -143,50 +167,17 @@
 @endsection
 @section('js')
     <script>
-        //Datepicker
-        $('#datepicker1').datepicker({
-            uiLibrary: 'bootstrap'
-        });
-        $('#datepicker2').datepicker({
-            uiLibrary: 'bootstrap'
-        });
-
-
-        //Launch soon animation
-       $(function(){
-            $('#demo').jBlink();
-        });
-
-        //Coming soon animation options
-        var opts = {
-            text: 'Coming soon',
-            direction: 'right',
-            infinite: true,
-            moving: true,
-            pauseOnHover: true,
-            speed: 3,
-            letterIn: function(lr){
-                lr.animate({'font-size':'30px', 'margin-left':'5px' ,'font-family':'Lato' })
-                lr.css('color','green')
-
-                setTimeout( function(){
-                    lr.css('color','blue')
-                    lr.animate({'font-size':'20px', 'margin-left':'22px'  })
-                }, 100 )
-
-                setTimeout( function(){
-                    lr.animate({'font-size':'50px', 'margin-left':'0px' ,'font-family':'Droid serif' })
-                    lr.css('color','black')
-                }, 200 )
-            },
-            letterOut: function(lr){
-                lr.animate({'font-size':'10px'},500,function(){
-                    $(this).fadeOut(300, function(){ $(this).remove() })
-                })
+        document.onreadystatechange = function () {
+            var state = document.readyState
+            if (state == 'interactive') {
+                document.getElementById('outer-wrapper').style.visibility="hidden";
+            } else if (state == 'complete') {
+                setTimeout(function(){
+                    document.getElementById('load').style.display="none";
+                    document.getElementById('outer-wrapper').style.visibility="visible";
+                },1000);
             }
         }
-
-        $('.fonteo').fonteo( opts )
 
     </script>
     <script>
@@ -219,11 +210,10 @@
                 },
                 success: function(data)
                 {
-                    swal({
-                    title: "Great !",
-                    text: 'Your details has been submitted',
-                    icon: "success",
-                });
+                    document.getElementById('toast').style.display="block";
+                    setInterval(function(){ document.getElementById('toast').style.display="none";
+                    },3000);
+
                 },
                 error: function (xhr) {
 
@@ -239,47 +229,5 @@
         });
 
     </script>
-    <script>
-        var opts = {
-            text: 'jQueryScript.Net',
-            direction: 'right',
-            infinite: true,
-            moving: true,
-            pauseOnHover: true,
-            speed: 5,
-            letterIn: function(lr){
-                lr.animate({'font-size':'30px', 'margin-left':'5px'  })
-                lr.css('color','green')
 
-                setTimeout( function(){
-                    lr.css('color','blue')
-                    lr.animate({'font-size':'20px', 'margin-left':'22px'  })
-                }, 100 )
-
-                setTimeout( function(){
-                    lr.animate({'font-size':'40px', 'margin-left':'0px'  })
-                    lr.css('color','inherit')
-                }, 200 )
-            },
-            letterOut: function(lr){
-                lr.animate({'font-size':'10px'},500,function(){
-                    $(this).fadeOut(300, function(){ $(this).remove() })
-                })
-            }
-        }
-
-        $('.fonteo').fonteo( opts )
-
-        $(document).ready(function(){
-
-            $('.toggle').click(function(){
-
-                //$('.fonteo').fonteo('resetAnimation')
-                $('.fonteo').fonteo( 'togglePause' )
-
-            })
-
-        })
-
-    </script>
 @endsection

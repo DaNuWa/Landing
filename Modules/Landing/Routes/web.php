@@ -11,9 +11,6 @@
 |
 */
 
-Route::prefix('landing')->group(function() {
-    Route::get('/', 'LandingController@index');
-});
 
 Route::get('/', function ()
 {
