@@ -1,33 +1,11 @@
 @extends('landing::layouts.master')
 
 @section('content')
-<header id="toast" style="display:none;background: #9e84bf; color:white;padding: 10px;width: 500px; margin-left: 50px;z-index: 999;margin-bottom: 50px;" >Sucessfully added your information</header>
     <div id="load" class="load">
         <img src="{{asset('assets/img/hippo_load.gif')}}" width="50%" >
     </div>
 
     <div id="outer-wrapper" class="animate translate-z-in">
-
-        <div class="toast-area" id="toasts">
-            <div style="display: none">
-                <div class="toast" id="clonemother">
-                    <div class="toast-content">
-                        <div class="before"></div>
-                        <div class="icon">&#x2714</div>
-                        <div class="text"><p>Success</p><p class="message">You just clicked the toast button, this toast will be closed in 2s..</p></div>
-                        <div onclick="deletethis()" class="close">&#x00D7</div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="toast">
-              <div class="toast-content">
-                <div class="before"></div>
-                <div class="icon">&#x2714</div>
-                <div class="text"><p>Success</p><p class="message">You just clicked the toast button, this toast will be closed in</p></div>
-                <div onclick="deletethis()" class="close">&#x00D7</div>
-              </div>
-            </div> -->
-        </div>
 
         <div id="inner-wrapper">
             <div id="table-wrapper" class="center">
@@ -80,6 +58,8 @@
                             <h2>Get Notify</h2>
                             <section>
                                 <div class="row">
+                                    <toast id="toast" style="display:none;background: green; color:white;padding: 10px;width: 500px; margin-left: 50px;z-index: 999;margin-bottom: 50px;" >Thank you</toast>
+
                                     <!-- <div class="col-md-6 col-sm-6">
                                         <h3>Address</h3>
                                         <address>
@@ -181,6 +161,25 @@
 
     </script>
     <script>
+
+        let nameerror=$('#validation-errors_name');
+        let emailerror=$('#validation-errors_email');
+        let contact_noerror=$('#validation-errors_contact_no');
+        $("#form-contact-name").on("change paste keyup", function() {
+            nameerror.text('')
+        });
+        $('#form-contact-email').on("change paste keyup",function()
+        {
+            emailerror.text('');
+
+        })
+
+        $('#form-contact-cnumber').on("change paste keyup",function()
+        {
+            contact_noerror.text('');
+
+        })
+
         $('#form-contact-submit').click(function (e)
         {
             e.preventDefault();
@@ -189,9 +188,6 @@
             let email=$('input[name="email"]').val();
             let contact_no=$('input[name="contact_no"]').val();
             let comments=$('textarea[name="comments"]').val();
-            let nameerror=$('#validation-errors_name');
-            let emailerror=$('#validation-errors_email');
-            let contact_noerror=$('#validation-errors_contact_no');
 
             nameerror.text('');
             emailerror.text('');
@@ -219,7 +215,7 @@
 
                     $('#validation-errors').html('');
                     $.each(xhr.responseJSON.errors, function(key,value) {
-                        $(`#validation-errors_${key}`).append('<div class="alert alert-danger" >'+value[0]+'</div');
+                        $(`#validation-errors_${key}`).append(value[0]);
                         console.log(key,value[0])
                     });
                 },

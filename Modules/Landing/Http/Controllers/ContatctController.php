@@ -34,9 +34,9 @@ class ContatctController extends Controller
      * @param ContactRequest $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $contatct=Contact::create($request->toArray());
+        $contatct=Contact::create($request->validated());
         return response()->json(['contact' => $contatct]);
     }
 

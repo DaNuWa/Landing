@@ -14,9 +14,9 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|sometimes|max:15',
-            'email'=>'required|email|unique:contacts',
-            'contact_no'=>['required', 'digits_between:10,12', 'unique:contacts'],
+            'name'=>'required|string|max:15',
+            'email'=>'required|email',
+            'contact_no'=>['required', 'digits_between:10,12'],
             'comments'=>'sometimes',
         ];
     }
