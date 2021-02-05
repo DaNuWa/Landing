@@ -22,6 +22,38 @@
                                 <h1  class='animate__animated animate__swing animate__infinite infinite'>We're Coming Soon!</h1>
                                 <h2 class="opacity-70">Contat us when the site come back!  No worries,no spam </h2>
                                 <a href="#contact" class="open-side-panel btn btn-default btn-framed">Get notify</a><br>
+                                <div class="quotes">
+                                    <blockquote>
+                                        <p>“That which can be asserted without evidence, can be dismissed without evidence.”</p>
+                                        <p>— Christopher Hitchens (Quote 1)</p>
+                                    </blockquote>
+
+                                    <blockquote>
+                                        <p>“Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.”</p>
+                                        <p>— Christopher Hitchens (Quote 2)</p>
+                                    </blockquote>
+
+                                    <blockquote>
+                                        <p>“Everybody does have a book in them, but in most cases that's where it should stay.”</p>
+                                        <p>— Christopher Hitchens (Quote 3)</p>
+                                    </blockquote>
+
+                                    <blockquote>
+                                        <p>“Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.”</p>
+                                        <p>— Christopher Hitchens (Quote 4)</p>
+                                    </blockquote>
+
+                                    <blockquote>
+                                        <p>“Human decency is not derived from religion. It precedes it.”</p>
+                                        <p>— Christopher Hitchens (Quote 5)</p>
+                                    </blockquote>
+
+                                    <blockquote>
+                                        <p>“Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.”</p>
+                                        <p>— Christopher Hitchens (Quote 6)</p>
+                                    </blockquote>
+                                </div><!-- .quotes -->
+
                             </div>
                             <!--end content-->
                         </div>
@@ -147,6 +179,19 @@
 @endsection
 @section('js')
     <script>
+    $(document).ready(function() {
+    // Call Quovolver on the '.quotes' object
+    $('.quotes').quovolver();
+    });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Call Quovolver on the '.quotes' object
+            $('.quotes').quovolver();
+        });
+    </script>
+    <script>
+
         document.onreadystatechange = function () {
             var state = document.readyState
             if (state == 'interactive') {
