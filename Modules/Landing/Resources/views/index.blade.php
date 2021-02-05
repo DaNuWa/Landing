@@ -90,7 +90,7 @@
                             <h2>Get Notify</h2>
                             <section>
                                 <div class="row">
-                                    <toast id="toast" style="display:none;background: green; color:white;padding: 10px;width: 500px; margin-left: 50px;z-index: 999;margin-bottom: 50px;" >Thank you</toast>
+                                    <toast id="toast" style="display:none;background: #4a5375; color:white;padding: 10px;width: 500px; margin-left: 50px;z-index: 999;margin-bottom: 50px;" >Thank you</toast>
 
                                     <!-- <div class="col-md-6 col-sm-6">
                                         <h3>Address</h3>
